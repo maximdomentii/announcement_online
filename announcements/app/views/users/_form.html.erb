@@ -1,0 +1,54 @@
+<%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@user.errors.count, "error") %> prohibited
+            you to sign up:
+          </h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <p>
+      <%= f.label :username %><br/>
+      <%= f.text_field :username %>
+    </p>
+
+    <p>
+      <%= f.label :email %><br/>
+      <%= f.email_field :email %>
+    </p>
+
+    <p>
+      <%= f.label :firstname %><br/>
+      <%= f.text_field :firstname %>
+    </p>
+
+    <p>
+      <%= f.label :lastname %><br/>
+      <%= f.text_field :lastname %>
+    </p>
+
+    <p>
+      <%= f.label :phone, "Telephone" %><br/>
+      <%= f.text_field :phone %>
+    </p>
+
+    <p>
+      <%= f.label :password %><br/>
+      <%= f.password_field :password %>
+    </p>
+
+    <p>
+      <%= f.label :password_confirmation, "Confirm password" %><br/>
+      <%= f.password_field :password_confirmation %><br/>
+    </p>
+
+    <p>
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    </p>
+<% end %>
