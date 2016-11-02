@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def show
-    # /contact|about/
-    if params[:id].match /about|contact/
+    # /contact|about|help/
+    if params[:id].match /about|contact|help/
       render params[:id]
     else
       render "/pages/not_found.html.erb", :status => 404

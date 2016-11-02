@@ -9,24 +9,18 @@
 </head>
 
 <body>
-<header class="fixed-header">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-10">
-        <div class="title">
-          <span>Announcements</span>
-        </div>
-      </div>
-      <div class="col-md-2">
-        <div class="loged-in">
-          <h4 class="username">Log in</h4>
-        </div>
-      </div>
+  <div class="row">
+    <%= render "layouts/header" %>
+  </div>
+  <div class="row">
+    <p id="notice"><%= flash[:success] %></p>
+    <p id="notice"><%= flash[:danger] %></p>
+    <div class="container">
+      <%= yield %>
     </div>
   </div>
-</header>
-<div class="container">
-  <%= yield %>
-</div>
+  <div class="row">
+    <%= render "layouts/footer" %>
+  </div>
 </body>
 </html>
