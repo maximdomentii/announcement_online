@@ -1,14 +1,14 @@
 <%= form_for(:session, url: login_path) do |f| %>
 
-    <p>
+    <div class="form-group">
       <%= f.label :username %><br/>
-      <%= f.text_field :username %>
-    </p>
+      <%= f.text_field :username, class: "form-control" %>
+    </div>
 
-    <p>
+    <div class="form-group">
       <%= f.label :password %><br/>
-      <%= f.password_field :password %>
-    </p>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
 
     <%= f.submit "Log in", class: "btn btn-primary" %>
 <% end %>

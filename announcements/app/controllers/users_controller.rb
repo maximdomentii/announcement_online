@@ -47,6 +47,14 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :firstname, :lastname, :phone, :password, :password_confirmation)
+    byebug
+    form_params = {}
+    if current_user.role == User.roles[:admin]
+      form_params = params.require(:user).permit(:username, :email, :firstname, :lastname, :phone, :password, :password_confirmation, :role)
+    else
+      form_params = params.require(:user).permit(:username, :email, :firstname, :lastname, :phone, :password, :password_confirmation)
+      form_params["role"] = "user"
+    end
+    form_params
   end
 end

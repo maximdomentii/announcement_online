@@ -9,17 +9,17 @@
 </head>
 
 <body>
-  <div class="row">
+  <div class="header">
     <%= render "layouts/header" %>
   </div>
-  <div class="row">
+  <div class="content">
     <p id="notice"><%= flash[:success] %></p>
     <p id="notice"><%= flash[:danger] %></p>
     <div class="container">
       <%= yield %>
     </div>
   </div>
-  <div class="row">
+  <div class="footer">
     <%= render "layouts/footer" %>
   </div>
 </body>
