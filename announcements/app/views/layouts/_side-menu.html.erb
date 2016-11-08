@@ -2,10 +2,9 @@
   <nav class="navbar navbar-default" role="navigation">
     <div class="side-menu-container">
       <ul class="nav navbar-nav">
-        <li class="active" ><%= link_to "Link 1", '#'%></li>
-        <li ><%= link_to "Link 2", '#'%></li>
-        <li ><%= link_to "Link 3", '#'%></li>
-        <li ><%= link_to "Link 4", '#'%></li>
+        <% get_all_categories.each do |category| %>
+            <li ><%= link_to category.name, category_path(category)%></li>
+        <% end %>
       </ul>
     </div>
   </nav>
