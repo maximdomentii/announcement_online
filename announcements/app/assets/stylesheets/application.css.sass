@@ -18,7 +18,43 @@
 @import "bootstrap"
 
 .content
-  margin-top: 91px
+  .row
+    overflow: hidden
+
+  margin-top: 51px
+
+  #success
+    color: green
+
+  #danger
+    color: red
+
+  .side-menu
+    padding-bottom: 1000px
+    margin-bottom: -1000px
+    height: 100%
+    background-color: #f8f8f8
+
+    .navbar
+      border: none
+
+      .side-menu-container
+        .navbar-nav
+          width: 100%
+
+          .active a
+            background-color: transparent
+            margin-right: -1px
+            border-right: 5px solid #e7e7e7
+
+          li
+            display: block
+            width: 100%
+            border-bottom: 1px solid #e7e7e7
+
+          li a
+            padding: 15px
+
 
 .footer
   nav
