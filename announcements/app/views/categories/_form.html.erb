@@ -1,0 +1,22 @@
+<%= form_for(@category) do |f| %>
+    <% if @category.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@category.errors.count, "error") %> prohibited
+            you to add a new category:
+          </h2>
+          <ul>
+            <% @category.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name %><br/>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Add new category", class: "btn btn-primary" %>
+<% end %>
