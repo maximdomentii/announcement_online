@@ -10,12 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161108133433) do
+ActiveRecord::Schema.define(version: 20161113130805) do
+
+  create_table "announcements", force: :cascade do |t|
+    t.string   "author",      default: "Anonymous"
+    t.string   "title"
+    t.text     "description"
+    t.date     "valid_to"
+    t.integer  "clicks",      default: 0
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["category_id"], name: "index_announcements_on_category_id"
+    t.index ["user_id"], name: "index_announcements_on_user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string   "source_string"
+    t.integer  "announcement_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["announcement_id"], name: "index_images_on_announcement_id"
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer  "rank",            default: 0
+    t.text     "comment"
+    t.integer  "announcement_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["announcement_id"], name: "index_ratings_on_announcement_id"
   end
 
   create_table "users", force: :cascade do |t|

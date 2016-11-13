@@ -12,13 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require bootstrap-sprockets
+//= require star-rating.min
 //= require_tree .
 
 $(function() {
     $(".side-menu li").click(function(event) {
-        event.preventDefault();
+        //event.preventDefault();
         $(this).addClass('active').siblings().removeClass('active');
     });
 });

@@ -1,0 +1,25 @@
+<%= form_for([@announcement, @announcement.images.build], url: announcements_images_path(:announcement_id => @announcement.id)) do |f| %>
+    <% if @announcement.errors.any? %>
+        <div id="error_explanation">
+          <h3>
+            <%= pluralize(@announcement.errors.count, "error") %> prohibited
+            you to add new image:
+          </h3>
+          <ul>
+            <% @announcement.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="image-upload">
+      <label for="file-input">
+        <span class="glyphicon glyphicon-camera"></span>
+        Choose image
+      </label>
+      <%= f.file_field :image_source, id: 'file-input'%>
+    </div>
+
+    <%= f.submit "Save this image", class: "btn btn-primary" %>
+<% end %>

@@ -3,7 +3,7 @@
     <div class="side-menu-container">
       <ul class="nav navbar-nav">
         <% get_all_categories.each do |category| %>
-            <li ><%= link_to category.name, category_path(category)%></li>
+            <%= link_to_in_li category.name, category_path(category)%>
         <% end %>
       </ul>
     </div>

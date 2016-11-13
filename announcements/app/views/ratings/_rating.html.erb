@@ -1,0 +1,14 @@
+<% if rating.id != nil %>
+    <p>
+      <strong>Rank:</strong>
+      <%= rating.rank %>
+    </p>
+
+    <p>
+      <strong>Commnet:</strong>
+      <%= rating.comment %>
+    </p>
+    <%= link_to 'Delete this review', announcements_ratings_path(:id => rating.id, :announcement_id => @announcement.id),
+                method: :delete,
+                data: {confirm: 'Are you sure?' } %>
+<% end %>

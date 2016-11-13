@@ -16,46 +16,64 @@
 
 @import "bootstrap-sprockets"
 @import "bootstrap"
+@import "star-rating.min"
 
-.content
-  .row
-    overflow: hidden
+::-webkit-scrollbar
+  width: 0px  /* remove scrollbar space */
+  background: transparent  /* optional: just make scrollbar invisible */
 
-  margin-top: 51px
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb
+  background: #FF0000
 
-  #success
-    color: green
+html
+  overflow: scroll
+  overflow-x: hidden
 
-  #danger
-    color: red
+  .content
+    .row
+      overflow: hidden
 
-  .side-menu
-    padding-bottom: 1000px
-    margin-bottom: -1000px
-    height: 100%
-    background-color: #f8f8f8
+    .content-min-height
+      min-height: 700px
 
-    .navbar
-      border: none
+    margin-top: 51px
 
-      .side-menu-container
-        .navbar-nav
-          width: 100%
+    #success
+      color: green
 
-          .active a
-            background-color: transparent
-            margin-right: -1px
-            border-right: 5px solid #e7e7e7
+    #danger
+      color: red
 
-          li
-            display: block
+    .side-menu
+      padding-bottom: 1000px
+      margin-bottom: -1000px
+      height: 100%
+      background-color: #f8f8f8
+
+      .navbar
+        border: none
+
+        .side-menu-container
+          .navbar-nav
             width: 100%
-            border-bottom: 1px solid #e7e7e7
 
-          li a
-            padding: 15px
+            .active a
+              background-color: transparent
+              margin-right: -1px
+              border-right: 5px solid #e7e7e7
+
+            li
+              display: block
+              width: 100%
+              border-bottom: 1px solid #e7e7e7
+
+            li a
+              padding: 15px
 
 
-.footer
-  nav
-    margin-left: 40%
+  .footer
+    footer
+      height: 500px
+    nav
+      margin-left: 40%

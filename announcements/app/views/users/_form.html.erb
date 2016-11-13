@@ -51,7 +51,7 @@
     <% if logged_in? && current_user.role == "admin" %>
         <div class="form-group">
           <%= f.label :role %>
-          <%= f.select :role, User.roles { |r| r }, include_blank: true, class: "form-control" %>
+          <%= f.select :role, User.roles { |r| r }, {}, class: "form-control" %>
         </div>
     <% end %>
 

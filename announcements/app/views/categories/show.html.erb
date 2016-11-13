@@ -1,7 +1,14 @@
-<p>
-  <strong>Category name:</strong>
+<h1>
   <%= @category.name %>
-</p>
+</h1>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<table>
+  <tr>
+    <th>Author</th>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+  <%= render @category.announcements %>
+</table>
+
+<%= link_to 'Add an announcement', new_announcements_path %>

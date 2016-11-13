@@ -1,0 +1,48 @@
+<%= link_to 'Edit announcement', edit_announcements_path(:id => @announcement.id) %>
+
+<p>
+  <strong>Author:</strong>
+  <%= @announcement.author %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @announcement.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @announcement.description %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @announcement.category.name %>
+</p>
+
+<p>
+  <strong>Valid to:</strong>
+  <%= @announcement.valid_to %>
+</p>
+
+<p>
+  <strong>Click:</strong>
+  <%= @announcement.clicks %>
+</p>
+
+<% if (@announcement.images.count != 0) %>
+  <%= carousel_for images_urls(@announcement) %>
+<% end %>
+
+<% if (@announcement.images.count < 5) %>
+    <h3>Add new image</h3>
+    <%= render 'images/form'%>
+<% end %>
+
+<h2>Rate this:</h2>
+<%= render 'ratings/form' %>
+
+<% if (@announcement.ratings.count != 0) %>
+    <h2>Reviews:</h2>
+    <%= render @announcement.ratings %>
+<% end %>

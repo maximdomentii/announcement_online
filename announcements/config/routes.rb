@@ -1,15 +1,4 @@
 Rails.application.routes.draw do
-  get 'categories/index'
-
-  get 'categories/new'
-
-  get 'categories/show'
-
-  get 'categories/edit'
-
-  get 'sessions/new'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'pages#home'
 
   get    '/help',   to: 'pages#help'
@@ -24,5 +13,13 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :categories
+  resource :announcements do
+    resource :ratings
+    resource :images
+  end
+
+  resources :categories do
+    resource :announcements
+  end
+
 end
