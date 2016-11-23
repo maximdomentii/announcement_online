@@ -47,7 +47,7 @@ class AnnouncementsController < ApplicationController
   private
 
   def announcement_params
-    ann_params = params.require(:announcement).permit(:author, :title, :description, :category_id)
+    ann_params = params.require(:announcement).permit(:title, :description, :category_id)
     #ann_params['category_id'] = params[:category_id]
     ann_params['user_id'] = current_user.id
     ann_params['valid_to'] = Date.today + 1.year

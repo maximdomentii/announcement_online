@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   def create
     uploaded_io = image_params[:image_source]
     File.open(uploaded_io.path) do |sourcefile|
-      File.open(Rails.root.join('public', 'uploads', 'image' + (Image.count+1).to_s + '.jpg'), 'wb') do |destinationfile|
+      File.open(Rails.root.join('public', 'uploads', 'image' + (Image.maximum(:id) + 1).to_s + '.jpg'), 'wb') do |destinationfile|
         sourcefile.each_line do |line|
           destinationfile.write(line)
         end
@@ -10,7 +10,7 @@ class ImagesController < ApplicationController
     end
 
     @announcement = Announcement.find(params[:announcement_id])
-    @image = @announcement.images.create({:source_string => '/uploads/image' + (Image.count+1).to_s + '.jpg'})
+    @image = @announcement.images.create({:source_string => '/uploads/image' + (Image.maximum(:id) + 1).to_s + '.jpg'})
 
     redirect_to announcements_path(:id => @announcement.id)
   end
