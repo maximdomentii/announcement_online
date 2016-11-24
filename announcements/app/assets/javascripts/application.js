@@ -17,9 +17,29 @@
 //= require_tree .
 
 $(function() {
-    $(".side-menu li").click(function(event) {
-        //event.preventDefault();
-        $(this).addClass('active').siblings().removeClass('active');
+    indicators = $('.carousel-indicators li');
+    halfSize = indicators.size()/2;
+    for (i = 0; i < halfSize; i++) {
+        if (!indicators[i].classList.contains('active')) {
+            indicators[halfSize + i].classList.add('display-none');
+        } else {
+            indicators[halfSize + i].classList.remove('display-none');
+        }
+    }
+
+    $(document).on("click", ".carousel-control", function(e){
+
+        e.preventDefault();
+
+        indicators = $('.carousel-indicators li');
+        halfSize = indicators.size()/2;
+        for (i = 0; i < halfSize; i++) {
+            if (!indicators[i].classList.contains('active')) {
+                indicators[halfSize + i].classList.add('display-none');
+            } else {
+                indicators[halfSize + i].classList.remove('display-none');
+            }
+        }
     });
 });
 
