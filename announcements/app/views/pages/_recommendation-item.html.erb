@@ -1,0 +1,8 @@
+<p>
+  <%= announcement.title %>
+</p>
+<% if announcement.images.count > 0 %>
+    <%= image_tag(announcement.images[0].source_string, width: '300px', height: '200px') %>
+<% else %>
+    <%= image_tag("/uploads/no-image.jpg", width: '300px', height: '200px') %>
+<% end %>
