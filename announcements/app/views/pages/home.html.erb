@@ -1,58 +1,64 @@
 <div class="recommendations">
   <div class="row" id="most-recent">
-    <div class="row recommendation-name">
-      <div class="col-md-10">
-        <h4>Most recent</h4>
+    <div class="col-md-12">
+      <div class="row recommendation-name">
+        <div class="col-md-10">
+          <h4>Most recent</h4>
+        </div>
       </div>
-    </div>
-    <div class="row recommendation-items">
-      <% get_most_recent.first(3).each do |announcement| %>
-          <div class="col-md-4">
-            <%= render partial: 'recommendation-item', locals: { announcement: announcement } %>
-          </div>
-      <% end %>
-    </div>
-    <div class="row recommendation-see-all">
-      <div class="col-md-10">
-        <h4>See all</h4>
+      <div class="row recommendation-items">
+        <% get_most_recent.first(3).each do |announcement| %>
+            <div class="col-md-4">
+              <%= render partial: 'recommendation-item', locals: { announcement: announcement } %>
+            </div>
+        <% end %>
+      </div>
+      <div class="row recommendation-see-all">
+        <div class="col-md-10">
+          <h4>See all</h4>
+        </div>
       </div>
     </div>
   </div>
   <div class="row" id="most-viewed">
-    <div class="row recommendation-name">
-      <div class="col-md-10">
-        <h4>Most viewed</h4>
+    <div class="col-md-12">
+      <div class="row recommendation-name">
+        <div class="col-md-10">
+          <h4>Most viewed</h4>
+        </div>
       </div>
-    </div>
-    <div class="row recommendation-items">
-      <% get_most_viewed.first(3).each do |announcement| %>
-          <div class="col-md-4">
-            <%= render partial: 'recommendation-item', locals: { announcement: announcement } %>
-          </div>
-      <% end %>
-    </div>
-    <div class="row recommendation-see-all">
-      <div class="col-md-10">
-        <h4>See all</h4>
+      <div class="row recommendation-items">
+        <% get_most_viewed.first(3).each do |announcement| %>
+            <div class="col-md-4">
+              <%= render partial: 'recommendation-item', locals: { announcement: announcement } %>
+            </div>
+        <% end %>
+      </div>
+      <div class="row recommendation-see-all">
+        <div class="col-md-10">
+          <h4>See all</h4>
+        </div>
       </div>
     </div>
   </div>
   <div class="row" id="best-rated">
-    <div class="row recommendation-name">
-      <div class="col-md-10">
-        <h4>Best rated</h4>
+    <div class="col-md-12">
+      <div class="row recommendation-name">
+        <div class="col-md-10">
+          <h4>Best rated</h4>
+        </div>
       </div>
-    </div>
-    <div class="row recommendation-items">
-      <% get_best_rated.first(3).each do |announcement| %>
-          <div class="col-md-4">
-            <%= render partial: 'recommendation-item', locals: { announcement: announcement } %>
-          </div>
-      <% end %>
-    </div>
-    <div class="row recommendation-see-all">
-      <div class="col-md-10">
-        <h4>See all</h4>
+      <div class="row recommendation-items">
+        <% get_best_rated.first(3).each do |announcement| %>
+            <div class="col-md-4">
+              <%= render partial: 'recommendation-item', locals: { announcement: announcement } %>
+            </div>
+        <% end %>
+      </div>
+      <div class="row recommendation-see-all">
+        <div class="col-md-10">
+          <h4>See all</h4>
+        </div>
       </div>
     </div>
   </div>

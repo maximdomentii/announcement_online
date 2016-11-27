@@ -30,7 +30,23 @@
       <%= f.select :category_id,  Category.all.collect {|x| [x.name, x.id]}, {}, class: "form-control" %>
     </div>
 
-    <%= f.submit "Add new announcement", class: "btn btn-primary" %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.label :price %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <%= f.text_field :price_value, class: "form-control" %>
+        </div>
+        <div class="col-md-6">
+          <%= f.select :price_currency, Announcement.currencies { |c| c }, {}, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+
+    <%= f.submit "Save announcement", class: "btn btn-primary" %>
 <% end %>
 
 <%= link_to 'Back', :back %>

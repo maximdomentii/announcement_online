@@ -2,7 +2,14 @@
   <%= announcement.title %>
 </p>
 <% if announcement.images.count > 0 %>
-    <%= image_tag(announcement.images[0].source_string, width: '300px', height: '200px') %>
+    <p>
+      <%= image_tag(announcement.images[0].source_string, width: '300px', height: '200px') %>
+    </p>
 <% else %>
     <%= image_tag("/uploads/no-image.jpg", width: '300px', height: '200px') %>
 <% end %>
+<% if announcement.price_value != nil %>
+  <p class="recommendation-price">
+    <span><%= announcement.price_value %> <%= announcement.price_currency %></span>
+  </p>
+<%end %>

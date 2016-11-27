@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123202153) do
+ActiveRecord::Schema.define(version: 20161126145305) do
 
   create_table "announcements", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
     t.date     "valid_to"
-    t.integer  "clicks",      default: 0
+    t.integer  "clicks",         default: 0
     t.integer  "category_id"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "price_value"
+    t.string   "price_currency"
     t.index ["category_id"], name: "index_announcements_on_category_id"
     t.index ["user_id"], name: "index_announcements_on_user_id"
   end

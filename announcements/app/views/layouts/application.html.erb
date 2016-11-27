@@ -10,18 +10,27 @@
 
 <body>
 <div class="header">
-  <%= render "layouts/header" %>
+  <%= render 'layouts/header' %>
 </div>
 <div class="content">
   <div class="container">
-    <div class="row">
-      <div class="search-bar">
-
+    <div class="row sub-header shadow">
+      <div class="col-md-2">
+        <div class="add-announcement">
+          <button type="button" class="btn btn-default" >
+            <span >Add announcement</span>
+          </button>
+        </div>
+      </div>
+      <div class="col-md-10">
+        <div class="search-bar">
+          <%= render 'layouts/search-bar' %>
+        </div>
       </div>
     </div>
-    <div class="row content-min-height">
+    <div class="row content-min-height shadow">
       <div class="col-md-2">
-        <%= render "layouts/side-menu"%>
+        <%= render 'layouts/side-menu' %>
       </div>
       <div class="col-md-10">
         <p id="success"><%= flash[:success] %></p>
@@ -32,7 +41,7 @@
   </div>
 </div>
 <div class="footer">
-  <%= render "layouts/footer" %>
+  <%= render 'layouts/footer' %>
 </div>
 </body>
 </html>

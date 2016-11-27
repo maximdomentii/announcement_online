@@ -5,6 +5,8 @@ class Announcement < ApplicationRecord
   has_many :ratings, dependent: :destroy
   validates :title, :description, :valid_to, :category_id, presence: true
 
+  enum currencies: { EUR: "EUR", RON: "RON", USD:"USD" }
+
   after_initialize do |announcement|
     announcement.valid_to ||= Date.tomorrow if new_record?
   end
