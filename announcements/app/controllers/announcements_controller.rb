@@ -8,7 +8,11 @@ class AnnouncementsController < ApplicationController
   end
 
   def new
-    @announcement = Announcement.new
+    if logged_in?
+      @announcement = Announcement.new
+    else
+      redirect_to login_path(:from_add_ann => true)
+    end
   end
 
   def edit
