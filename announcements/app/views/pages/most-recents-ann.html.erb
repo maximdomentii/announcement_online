@@ -1,0 +1,7 @@
+<div class="page-title"><span>Most Recent Announcements</span></div>
+
+<% if @announcements.count == 0 %>
+    <p>No recent announcements</p>
+<% else %>
+    <%= render partial: 'announcement-list', locals: { announcements: @announcements } %>
+<% end %>

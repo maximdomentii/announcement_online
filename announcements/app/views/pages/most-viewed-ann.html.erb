@@ -1,0 +1,7 @@
+<div class="page-title"><span>Most Viewed Announcements</span></div>
+
+<% if @announcements.count == 0 %>
+    <p>No viewed announcements</p>
+<% else %>
+    <%= render partial: 'announcement-list', locals: { announcements: @announcements } %>
+<% end %>

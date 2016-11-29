@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  include AnnouncementsHelper
+
   def show
     # /contact|about|help/
     if params[:id].match /about|contact|help/
@@ -34,6 +36,21 @@ class PagesController < ApplicationController
   def get_current_user_announcements
     @announcements = current_user.announcements
     render 'pages/user-announcements'
+  end
+
+  def most_recent
+    @announcements = get_most_recent
+    render 'pages/most-recents-ann'
+  end
+
+  def most_viewed
+    @announcements = get_most_viewed
+    render 'pages/most-viewed-ann'
+  end
+
+  def best_rated
+    @announcements = get_best_rated
+    render 'pages/best-rated-ann'
   end
 
   private

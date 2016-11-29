@@ -1,15 +1,19 @@
-<p>
-  <%= announcement.title %>
-</p>
-<% if announcement.images.count > 0 %>
-    <p>
-      <%= image_tag(announcement.images[0].source_string, width: '300px', height: '200px') %>
-    </p>
-<% else %>
-    <%= image_tag("/uploads/no-image.jpg", width: '300px', height: '200px') %>
-<% end %>
-<% if announcement.price_value != nil %>
-  <p class="recommendation-price">
-    <span><%= announcement.price_value %> <%= announcement.price_currency %></span>
-  </p>
-<%end %>
+<div class="recommendation-item">
+  <%= link_to announcements_path(:id => announcement.id)  do %>
+      <p>
+        <%= announcement.title %>
+      </p>
+      <% if announcement.images.count > 0 %>
+          <p>
+            <%= image_tag(announcement.images[0].source_string, width: '200px', height: '150px') %>
+          </p>
+      <% else %>
+          <%= image_tag("/uploads/no-image.jpg", width: '300px', height: '200px') %>
+      <% end %>
+      <% if announcement.price_value != nil %>
+          <p class="recommendation-price">
+            <span><%= announcement.price_value %> <%= announcement.price_currency %></span>
+          </p>
+      <%end %>
+  <% end %>
+</div>
