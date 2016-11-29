@@ -1,0 +1,11 @@
+<% if @announcements.count == 0 %>
+    <p>You have no announcements added</p>
+    <button type="button" class="btn btn-default" >
+      <%= link_to 'Add new announcement', new_announcements_path %>
+    </button>
+<% else %>
+    <button type="button" class="btn btn-default" >
+      <%= link_to 'Add new announcement', new_announcements_path %>
+    </button>
+    <%= render partial: 'announcement-list', locals: { announcements: @announcements } %>
+<% end %>

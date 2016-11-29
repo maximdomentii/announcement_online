@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get    '/about',       to: 'pages#about'
   get    '/contact',     to: 'pages#contact'
   get    'pages/search', to: 'pages#search'
+  get    'pages/get_current_user_announcements', to: 'pages#get_current_user_announcements'
 
   get    '/signup',      to: 'users#new'
 

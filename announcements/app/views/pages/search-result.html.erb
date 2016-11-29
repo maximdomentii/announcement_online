@@ -1,17 +1,5 @@
 <% if @announcements.count == 0 %>
     <p>No result found for your searching criteria</p>
 <% else %>
-    <table>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-      </tr>
-      <% @announcements.each do |announcement| %>
-          <tr>
-            <td><%= announcement.title %></td>
-            <td><%= announcement.description %></td>
-            <td><%= link_to 'Show', announcements_path(:id => announcement.id) %></td>
-          </tr>
-      <% end %>
-    </table>
+    <%= render partial: 'announcement-list', locals: { announcements: @announcements } %>
 <% end %>

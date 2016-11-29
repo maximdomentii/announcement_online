@@ -31,6 +31,11 @@ class PagesController < ApplicationController
     render 'pages/search-result'
   end
 
+  def get_current_user_announcements
+    @announcements = current_user.announcements
+    render 'pages/user-announcements'
+  end
+
   private
 
   def search_params

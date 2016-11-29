@@ -1,0 +1,13 @@
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+  <% announcements.each do |announcement| %>
+      <tr>
+        <td><%= announcement.title %></td>
+        <td><%= announcement.description %></td>
+        <td><%= link_to 'Show', announcements_path(:id => announcement.id) %></td>
+      </tr>
+  <% end %>
+</table>
