@@ -52,6 +52,10 @@ class AnnouncementsController < ApplicationController
 
   def announcement_params
     ann_params = params.require(:announcement).permit(:title, :description, :category_id, :price_value, :price_currency)
+    if ann_params[:price_value].empty?
+      ann_params[:price_value] = nil
+      ann_params[:price_currency] = nil
+    end
     ann_params['user_id'] = current_user.id
     ann_params['valid_to'] = Date.today + 1.year
     ann_params

@@ -1,10 +1,10 @@
 <%= form_for(@announcement) do |f| %>
     <% if @announcement.errors.any? %>
         <div id="error_explanation">
-          <h2>
+          <p>
             <%= pluralize(@announcement.errors.count, "error") %> prohibited
             you to add a new announcement:
-          </h2>
+          </p>
           <ul>
             <% @announcement.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -44,5 +44,5 @@
       </div>
     </div>
 
-    <%= f.submit "Add new announcement", class: "btn btn-primary" %>
+    <%= f.submit "Save announcement", class: "btn btn-default" %>
 <% end %>

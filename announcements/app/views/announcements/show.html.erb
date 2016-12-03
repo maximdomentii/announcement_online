@@ -1,43 +1,61 @@
-<%= link_to 'Edit announcement', edit_announcements_path(:id => @announcement.id) %>
+<div class="announcement-details">
+  <div class="page-title"><span><%= @announcement.title %></span></div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @announcement.title %>
-</p>
+  <% if logged_in?  and current_user.id == @announcement.user_id %>
+      <%= link_to edit_announcements_path(:id => @announcement.id) do %>
+          <button class="btn btn-default">Edit announcement</button>
+      <% end %>
+  <% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @announcement.description %>
-</p>
+  <div class="announcement-images">
+    <% if (@announcement.images.count != 0) %>
+        <%= carousel_for images_urls(@announcement), @announcement.images, @announcement.id %>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Category:</strong>
-  <%= @announcement.category.name %>
-</p>
+  <div class="announcement-price">
+    <% if @announcement.price_value != nil %>
+        <span><%= @announcement.price_value %> <%= @announcement.price_currency %></span>
+    <% end %>
+  </div>
 
-<p>
-  <strong>Valid to:</strong>
-  <%= @announcement.valid_to %>
-</p>
+  <hr>
 
-<p>
-  <strong>Click:</strong>
-  <%= @announcement.clicks %>
-</p>
+  <div class="announcement-description">
+    <%= simple_format @announcement.description %>
+  </div>
 
-<% if (@announcement.images.count != 0) %>
-  <%= carousel_for images_urls(@announcement), @announcement.images, @announcement.id %>
-<% end %>
+  <div class="row">
+    <div class="col-md-4 announcement-views">
+      <span class="announcement-label">Views:</span>
+      <span class="announcement-value"><%= @announcement.clicks %></span>
+    </div>
+    <div class="col-md-4 announcement-category">
+      <span class="announcement-label">Category:</span>
+      <span class="announcement-value"><%= @announcement.category.name %></span>
+    </div>
+    <div class="col-md-4 announcement-validity">
+      <span class="announcement-label">Valid to:</span>
+      <span class="announcement-value"><%= @announcement.valid_to %></span>
+    </div>
+  </div>
 
-<% if (@announcement.images.count < 5) %>
-    <h3>Add new image</h3>
-    <%= render 'images/form'%>
-<% end %>
+  <hr>
 
-<h2>Rate this:</h2>
-<%= render 'ratings/form' %>
+  <% if (@announcement.images.count < 5) %>
+      <div class="subtitle"><span>Add new image:</span></div>
+      <%= render 'images/form'%>
+  <% end %>
 
-<% if (@announcement.ratings.count != 0) %>
-    <h2>Reviews:</h2>
-    <%= render @announcement.ratings %>
-<% end %>
+  <hr>
+
+  <div class="subtitle"><span>Rate this announcement:</span></div>
+  <%= render 'ratings/form' %>
+
+  <hr>
+
+  <% if (@announcement.ratings.count != 0) %>
+      <div class="subtitle"><span>Reviews:</span></div>
+      <%= render @announcement.ratings %>
+  <% end %>
+</div>

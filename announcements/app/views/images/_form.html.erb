@@ -1,10 +1,10 @@
 <%= form_for([@announcement, @announcement.images.build], url: announcements_images_path(:announcement_id => @announcement.id)) do |f| %>
     <% if @announcement.errors.any? %>
         <div id="error_explanation">
-          <h3>
+          <p>
             <%= pluralize(@announcement.errors.count, "error") %> prohibited
             you to add new image:
-          </h3>
+          </p>
           <ul>
             <% @announcement.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -13,13 +13,14 @@
         </div>
     <% end %>
 
-    <div class="image-upload">
-      <label for="file-input">
-        <span class="glyphicon glyphicon-camera"></span>
-        Choose image
-      </label>
-      <%= f.file_field :image_source, id: 'file-input'%>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.file_field :image_source, id: 'file-input', class: 'btn btn-default form-control'%>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <%= f.submit "Save this image", class: "btn btn-default" %>
+      </div>
     </div>
-
-    <%= f.submit "Save this image", class: "btn btn-primary" %>
 <% end %>

@@ -1,12 +1,12 @@
-<h1>Edit announcement</h1>
+<div class="page-title"><span>Edit announcement</span></div>
 
 <%= form_for(@announcement, url: {action: "update", :id => @announcement.id}) do |f| %>
     <% if @announcement.errors.any? %>
         <div id="error_explanation">
-          <h2>
+          <p>
             <%= pluralize(@announcement.errors.count, "error") %> prohibited
             you to add a new announcement:
-          </h2>
+          </p>
           <ul>
             <% @announcement.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -46,7 +46,9 @@
       </div>
     </div>
 
-    <%= f.submit "Save announcement", class: "btn btn-primary" %>
+    <%= f.submit "Save announcement", class: "btn btn-default" %>
 <% end %>
 
-<%= link_to 'Back', :back %>
+<%= link_to(:back) do%>
+    <button class="btn btn-default">Back</button>
+<% end %>
