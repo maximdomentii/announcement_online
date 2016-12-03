@@ -17,6 +17,7 @@
 //= require_tree .
 
 $(function() {
+    /* Start carousel script */
     indicators = $('.carousel-indicators li');
     halfSize = indicators.size()/2;
     for (i = 0; i < halfSize; i++) {
@@ -41,5 +42,11 @@ $(function() {
             }
         }
     });
-});
+    /* End carousel script */
 
+    /* Clear search bar input on page reload */
+    $(document).ready( function(e){
+
+        $('.search-bar input#keyword').val("");
+    });
+});

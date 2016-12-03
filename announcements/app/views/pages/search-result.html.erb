@@ -1,5 +1,9 @@
+<div class="page-title"><span>Search results</span></div>
+
 <% if @announcements.count == 0 %>
     <p>No result found for your searching criteria</p>
 <% else %>
-    <%= render partial: 'announcement-list', locals: { announcements: @announcements } %>
+    <% @announcements.each do |announcement| %>
+        <%= render partial: 'layouts/announcement-item', locals: { announcement: announcement } %>
+    <% end %>
 <% end %>

@@ -1,13 +1,9 @@
-<h1>
-  <%= @category.name %>
-</h1>
+<div class="page-title"><span><%= @category.name %></span></div>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Description</th>
-  </tr>
-  <%= render @category.announcements %>
-</table>
-
-<%= link_to 'Add an announcement', new_announcements_path %>
+<% if @category.announcements.count == 0 %>
+    <p>No announcements in this category</p>
+<% else %>
+    <% @category.announcements.each do |announcement| %>
+        <%= render partial: 'layouts/announcement-item', locals: { announcement: announcement } %>
+    <% end %>
+<% end %>

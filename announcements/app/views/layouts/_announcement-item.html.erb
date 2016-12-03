@@ -1,0 +1,42 @@
+<div class="announcement-item">
+  <%= link_to announcements_path(:id => announcement.id)  do %>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="row title">
+            <div class="col-md-12">
+              <p>
+                <%= announcement.title %>
+              </p>
+            </div>
+          </div>
+          <div class="row description">
+            <div class="col-md-12">
+              <p>
+                <%= simple_format announcement.description %>
+              </p>
+            </div>
+          </div>
+          <div id="gradient"></div>
+          <div class="row price">
+            <div class="col-md-12">
+              <% if announcement.price_value != nil %>
+                  <p>
+                    <span><%= announcement.price_value %> <%= announcement.price_currency %></span>
+                  </p>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <% if announcement.images.count > 0 %>
+              <p>
+                <%= image_tag(announcement.images[0].source_string, width: '200px', height: '150px') %>
+              </p>
+          <% else %>
+              <%= image_tag("/uploads/no-image.jpg", width: '300px', height: '200px') %>
+          <% end %>
+        </div>
+      </div>
+  <% end %>
+  <hr>
+</div>
