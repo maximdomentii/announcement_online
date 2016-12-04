@@ -9,9 +9,15 @@
 
   <div class="announcement-images">
     <% if (@announcement.images.count != 0) %>
-        <%= carousel_for images_urls(@announcement), @announcement.images, @announcement.id %>
+        <%= carousel_for images_urls(@announcement), @announcement.images, @announcement, current_user %>
+        <hr>
+    <% elsif logged_in?  and current_user.id == @announcement.user_id %>
+        <p class="error">You have no images on this announcement! You can upload up to 5 images.</p>
+        <hr>
     <% end %>
   </div>
+
+
 
   <div class="announcement-price">
     <% if @announcement.price_value != nil %>
@@ -42,12 +48,13 @@
 
   <hr>
 
-  <% if (@announcement.images.count < 5) %>
-      <div class="subtitle"><span>Add new image:</span></div>
-      <%= render 'images/form'%>
+  <% if logged_in?  and current_user.id == @announcement.user_id %>
+      <% if (@announcement.images.count < 5) %>
+          <div class="subtitle"><span>Add new image:</span></div>
+          <%= render 'images/form'%>
+      <% end %>
+      <hr>
   <% end %>
-
-  <hr>
 
   <div class="subtitle"><span>Rate this announcement:</span></div>
   <%= render 'ratings/form' %>

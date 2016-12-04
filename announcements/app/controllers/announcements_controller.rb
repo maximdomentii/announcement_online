@@ -1,8 +1,11 @@
 class AnnouncementsController < ApplicationController
   def show
     @announcement = Announcement.find(params[:id])
-    click @announcement
-    @announcement.save
+
+    if !current_url_same_as_previous?
+      click @announcement
+      @announcement.save
+    end
 
     @announcement
   end
@@ -67,6 +70,10 @@ class AnnouncementsController < ApplicationController
     else
       announcement.clicks = announcement.clicks + 1
     end
-
   end
+
+  def current_url_same_as_previous?
+    session[:previous_url] == session[:current_url] ? true : false
+  end
+
 end

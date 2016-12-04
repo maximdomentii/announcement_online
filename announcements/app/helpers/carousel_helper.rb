@@ -1,14 +1,14 @@
 module CarouselHelper
 
-  def carousel_for(images, imagesObj, annId)
-    Carousel.new(self, images, imagesObj, annId).html
+  def carousel_for(images, imagesObj, announcement, current_user)
+    Carousel.new(self, images, imagesObj, announcement, current_user).html
   end
 
   class Carousel
-    include AnnouncementsHelper
+    include AnnouncementsHelper, SessionsHelper
 
-    def initialize(view, images, imagesObj, annId)
-      @view, @images, @imagesObj, @annId = view, images, imagesObj, annId
+    def initialize(view, images, imagesObj, announcement, current_user)
+      @view, @images, @imagesObj, @announcement, @current_user = view, images, imagesObj, announcement, current_user
       @uid = SecureRandom.hex(6)
     end
 
@@ -19,7 +19,7 @@ module CarouselHelper
 
     private
 
-    attr_accessor :view, :images, :uid, :imagesObj, :annId
+    attr_accessor :view, :images, :uid, :imagesObj, :announcement, :current_user
     delegate :link_to, :content_tag, :image_tag, :safe_join, to: :view
 
     def indicators
@@ -28,7 +28,11 @@ module CarouselHelper
       points = content_tag(:ol, safe_join(items), class: 'carousel-indicators')
 
       del_items = imagesObj.map { |img| deletion_tag(img) }
-      dels = content_tag(:ol, safe_join(del_items), class: 'carousel-indicators')
+      dels = []
+
+      if logged_in?  and (current_user.id == announcement.user_id or current_user.role == 'admin')
+        dels = content_tag(:ol, safe_join(del_items), class: 'carousel-indicators')
+      end
 
       divs = [points, dels]
 
@@ -48,7 +52,7 @@ module CarouselHelper
     end
 
     def deletion_tag(index)
-      content_tag(:li, link_to('Remove this image', announcement_image_path(index.id, annId), method: :delete, data: {confirm: 'Are you sure?' }), class: 'ann-image-remove')
+      content_tag(:li, link_to('Remove this image', announcement_image_path(index.id, announcement.id), method: :delete, data: {confirm: 'Are you sure?' }), class: 'ann-image-remove')
     end
 
     def slides
