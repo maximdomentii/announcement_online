@@ -1,6 +1,8 @@
 <div class="announcement-details">
   <div class="page-title"><span><%= @announcement.title %></span></div>
 
+  <hr>
+
   <% if logged_in?  and current_user.id == @announcement.user_id %>
       <%= link_to edit_announcements_path(:id => @announcement.id) do %>
           <button class="btn btn-default">Edit announcement</button>

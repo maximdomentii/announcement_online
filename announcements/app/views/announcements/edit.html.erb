@@ -1,5 +1,7 @@
 <div class="page-title"><span>Edit announcement</span></div>
 
+<hr>
+
 <%= form_for(@announcement, url: {action: "update", :id => @announcement.id}) do |f| %>
     <% if @announcement.errors.any? %>
         <div id="error_explanation">

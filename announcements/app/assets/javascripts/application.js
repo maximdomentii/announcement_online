@@ -17,7 +17,7 @@
 //= require_tree .
 
 $(function() {
-    /* Start carousel script */
+    /* Carousel script */
     indicators = $('.carousel-indicators li');
     halfSize = indicators.size()/2;
     for (i = 0; i < halfSize; i++) {
@@ -49,4 +49,5 @@ $(function() {
 
         $('.search-bar input#keyword').val("");
     });
+
 });

@@ -1,32 +1,72 @@
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<div class="page-title"><span>My account settings</span></div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<hr>
 
-<p>
-  <strong>Role:</strong>
-  <%= @user.role.to_s %>
-</p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @user.firstname %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @user.lastname %>
-</p>
-
-<p>
-  <strong>Telephone:</strong>
-  <%= @user.phone %>
-</p>
+<div class="row">
+  <div class="col-md-2">
+    <p><strong>Name</strong></p>
+  </div>
+  <div class="col-md-8">
+    <p><span><%= @user.firstname %> <%= @user.lastname %></span></p>
+    <div id="edit-name-form"></div>
+  </div>
+  <div class="col-md-2">
+    <p><%= link_to 'Edit', users_new_edit_name_path(id: @user.id), :remote=>true , id: 'edit-name' %></p>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    <p><strong>Username</strong></p>
+  </div>
+  <div class="col-md-8">
+    <p><%= @user.username %></p>
+    <div id="edit-username-form"></div>
+  </div>
+  <div class="col-md-2">
+    <p><%= link_to 'Edit', {}, id: 'edit-username' %></p>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    <p><strong>Email</strong></p>
+  </div>
+  <div class="col-md-8">
+    <p><%= @user.email %></p>
+    <div id="edit-email-form"></div>
+  </div>
+  <div class="col-md-2">
+    <p><%= link_to 'Edit', {}, id: 'edit-email' %></p>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    <p><strong>Telephone</strong></p>
+  </div>
+  <div class="col-md-8">
+    <p><%= @user.phone %></p>
+    <div id="edit-phone-form"></div>
+  </div>
+  <div class="col-md-2">
+    <p><%= link_to 'Edit', {}, id: 'edit-phone' %></p>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-2">
+    <p><strong>Password</strong></p>
+  </div>
+  <div class="col-md-8">
+    <br>
+    <div id="edit-password-form"></div>
+  </div>
+  <div class="col-md-2">
+    <p><%= link_to 'Edit', {}, id: 'edit-password' %></p>
+  </div>
+</div>
+<hr>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

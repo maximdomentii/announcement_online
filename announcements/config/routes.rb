@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   post   '/login',       to: 'sessions#create'
   delete '/logout',      to: 'sessions#destroy'
 
+  get 'users/new_edit_name', to: 'users#new_edit_name'
+  patch 'users/edit_name', to: 'users#edit_name'
   resources :users
 
   resource :announcements do

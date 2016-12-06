@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def index
     @users = User.all
   end
@@ -42,6 +43,27 @@ class UsersController < ApplicationController
     @user.destroy
 
     redirect_to users_path
+  end
+
+  def new_edit_name
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.js { render :edit_name }
+    end
+  end
+
+  def edit_name
+    @user = User.find params[:id]
+
+    if @user.update(user_params)
+      redirect_to @user
+    else
+      respond_to do |format|
+        format.html { redirect_to @user }
+        format.js { render :edit_name }
+      end
+    end
   end
 
   private
