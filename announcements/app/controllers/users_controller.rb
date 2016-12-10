@@ -19,12 +19,21 @@ class UsersController < ApplicationController
   def create
     @user = User.new user_params
 
-    if @user.save
-      log_in @user
-      flash[:success] = 'Welcome to the Announcements!'
-      redirect_to root_path
+    if params[:from] == 'user_list'
+      if @user.save
+        flash[:success] = "User #{@user.username} successfully added!"
+        redirect_to users_path
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      if @user.save
+        log_in @user
+        flash[:success] = 'Welcome to the Announcements!'
+        redirect_to root_path
+      else
+        render 'new'
+      end
     end
   end
 

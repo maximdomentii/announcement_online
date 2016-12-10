@@ -11,7 +11,11 @@
     <div id="edit-name-form"></div>
   </div>
   <div class="col-md-2">
-    <p><%= link_to 'Edit', users_new_edit_name_path(id: @user.id), :remote=>true , id: 'edit-name' %></p>
+    <% if current_user.username == @user.username %>
+        <p><%= link_to 'Edit', users_new_edit_name_path(id: @user.id), :remote=>true , id: 'edit-name' %></p>
+    <% else %>
+        <br>
+    <% end %>
   </div>
 </div>
 <hr>
@@ -24,7 +28,11 @@
     <div id="edit-username-form"></div>
   </div>
   <div class="col-md-2">
-    <p><%= link_to 'Edit', users_new_edit_username_path(id: @user.id), :remote=>true , id: 'edit-username' %></p>
+    <% if current_user.username == @user.username %>
+        <p><%= link_to 'Edit', users_new_edit_username_path(id: @user.id), :remote=>true , id: 'edit-username' %></p>
+    <% else %>
+        <br>
+    <% end %>
   </div>
 </div>
 <hr>
@@ -37,7 +45,11 @@
     <div id="edit-email-form"></div>
   </div>
   <div class="col-md-2">
-    <p><%= link_to 'Edit', users_new_edit_email_path(id: @user.id), :remote=>true , id: 'edit-email' %></p>
+    <% if current_user.username == @user.username %>
+        <p><%= link_to 'Edit', users_new_edit_email_path(id: @user.id), :remote=>true , id: 'edit-email' %></p>
+    <% else %>
+        <br>
+    <% end %>
   </div>
 </div>
 <hr>
@@ -50,7 +62,11 @@
     <div id="edit-phone-form"></div>
   </div>
   <div class="col-md-2">
-    <p><%= link_to 'Edit', users_new_edit_phone_path(id: @user.id), :remote=>true , id: 'edit-phone' %></p>
+    <% if current_user.username == @user.username %>
+        <p><%= link_to 'Edit', users_new_edit_phone_path(id: @user.id), :remote=>true , id: 'edit-phone' %></p>
+    <% else %>
+        <br>
+    <% end %>
   </div>
 </div>
 <hr>
@@ -63,13 +79,21 @@
     <div id="edit-password-form"></div>
   </div>
   <div class="col-md-2">
-    <p><%= link_to 'Edit', users_new_edit_password_path(id: @user.id), :remote=>true , id: 'edit-password' %></p>
+    <% if current_user.username == @user.username %>
+        <p><%= link_to 'Edit', users_new_edit_password_path(id: @user.id), :remote=>true , id: 'edit-password' %></p>
+    <% else %>
+        <br>
+    <% end %>
   </div>
 </div>
 <hr>
 <div class="row">
   <div class="col-md-2">
-    <p><%= link_to 'Delete account', user_path(@user, to: 'home_page'), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% if current_user.username == @user.username  and current_user.username != 'admin' %>
+        <p><%= link_to 'Delete account', user_path(@user, to: 'home_page'), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+    <% else %>
+        <br>
+    <% end %>
   </div>
   <div class="col-md-8">
     <br>
