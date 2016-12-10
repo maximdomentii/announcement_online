@@ -50,4 +50,15 @@ $(function() {
         $('.search-bar input#keyword').val("");
     });
 
+    /* Clear success/error messages from top of the page */
+    if ($('.content div div div p.success').html() != "") {
+        $(document).on("click", "body", function(e){
+            $('.content div div div p.success').html("");
+        });
+    }
+    if ($('.content div div div p.error').html() != "") {
+        $(document).on("click", "body", function(e){
+            $('.content div div div p.error').html("");
+        });
+    }
 });

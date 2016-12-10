@@ -1,4 +1,4 @@
-<%= form_for(@user, :url => users_edit_name_path(id: @user.id)) do |f| %>
+<%= form_for(@user, :url => users_edit_email_path(id: @user.id)) do |f| %>
     <% if @user.errors.any? %>
         <div id="error_explanation">
           <p>
@@ -14,13 +14,13 @@
     <% end %>
 
     <div class="form-group">
-      <%= f.label :firstname,'New firstname' %><br/>
-      <%= f.text_field :firstname, class: "form-control" %>
+      <%= f.label :email, 'New email' %><br/>
+      <%= f.text_field :email, class: "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= f.label :lastname, 'New lastname' %><br/>
-      <%= f.text_field :lastname, class: "form-control" %>
+      <%= f.label :password %><br/>
+      <%= f.password_field :password, class: "form-control" %>
     </div>
 
     <%= f.submit "Save", class: "btn btn-default" %>

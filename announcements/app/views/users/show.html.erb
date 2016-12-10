@@ -24,7 +24,7 @@
     <div id="edit-username-form"></div>
   </div>
   <div class="col-md-2">
-    <p><%= link_to 'Edit', {}, id: 'edit-username' %></p>
+    <p><%= link_to 'Edit', users_new_edit_username_path(id: @user.id), :remote=>true , id: 'edit-username' %></p>
   </div>
 </div>
 <hr>
@@ -37,7 +37,7 @@
     <div id="edit-email-form"></div>
   </div>
   <div class="col-md-2">
-    <p><%= link_to 'Edit', {}, id: 'edit-email' %></p>
+    <p><%= link_to 'Edit', users_new_edit_email_path(id: @user.id), :remote=>true , id: 'edit-email' %></p>
   </div>
 </div>
 <hr>
@@ -50,7 +50,7 @@
     <div id="edit-phone-form"></div>
   </div>
   <div class="col-md-2">
-    <p><%= link_to 'Edit', {}, id: 'edit-phone' %></p>
+    <p><%= link_to 'Edit', users_new_edit_phone_path(id: @user.id), :remote=>true , id: 'edit-phone' %></p>
   </div>
 </div>
 <hr>
@@ -63,10 +63,18 @@
     <div id="edit-password-form"></div>
   </div>
   <div class="col-md-2">
-    <p><%= link_to 'Edit', {}, id: 'edit-password' %></p>
+    <p><%= link_to 'Edit', users_new_edit_password_path(id: @user.id), :remote=>true , id: 'edit-password' %></p>
   </div>
 </div>
 <hr>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="row">
+  <div class="col-md-2">
+    <p><%= link_to 'Delete account', user_path(@user, to: 'home_page'), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
+  <div class="col-md-8">
+    <br>
+  </div>
+  <div class="col-md-2">
+    <br>
+  </div>
+</div>

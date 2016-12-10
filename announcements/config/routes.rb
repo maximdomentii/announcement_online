@@ -17,7 +17,17 @@ Rails.application.routes.draw do
   delete '/logout',      to: 'sessions#destroy'
 
   get 'users/new_edit_name', to: 'users#new_edit_name'
+  get 'users/new_edit_username', to: 'users#new_edit_username'
+  get 'users/new_edit_phone', to: 'users#new_edit_phone'
+  get 'users/new_edit_email', to: 'users#new_edit_email'
+  get 'users/new_edit_password', to: 'users#new_edit_password'
+
   patch 'users/edit_name', to: 'users#edit_name'
+  patch 'users/edit_username', to: 'users#edit_username'
+  patch 'users/edit_phone', to: 'users#edit_phone'
+  patch 'users/edit_email', to: 'users#edit_email'
+  patch 'users/edit_password', to: 'users#edit_password'
+
   resources :users
 
   resource :announcements do
